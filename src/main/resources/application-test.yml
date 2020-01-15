@@ -1,0 +1,8 @@
+redis:
+  host:
+    name: localhost
+    port: 6379
+redsky:
+  host: redsky.target.com
+  version: v2
+  endpoint: /pdp/tcin
