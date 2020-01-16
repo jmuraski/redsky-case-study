@@ -3,3 +3,4 @@
 /.imdone/
 /.idea/
 /notes/
+/docker/redis-data/dump.rdb
