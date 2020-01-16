@@ -6,3 +6,12 @@ redsky:
   host: redsky.target.com
   version: v2
   endpoint: /pdp/tcin
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+  endpoint:
+    health:
+      show-components: always

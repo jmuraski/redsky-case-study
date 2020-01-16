@@ -68,3 +68,4 @@ tasks.withType(Test) {
 
 integrationTest.reports.html.destination = file("$buildDir/reports/test/integration")
 functionalTest.reports.html.destination = file("$buildDir/reports/test/functional")
+test.reports.html.destination = file("$buildDir/reports/test/unit")
