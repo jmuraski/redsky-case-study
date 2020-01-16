@@ -1,10 +1,8 @@
 package com.jmuraski.service
 
 import com.jmuraski.CaseStudyApplication
-import groovy.json.JsonSlurper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.http.ResponseEntity
 import org.springframework.test.context.ActiveProfiles
 import spock.lang.Specification
 
@@ -20,14 +18,14 @@ class RedskyRestServiceIntegrationSpec extends Specification{
         String id = '78315118'
 
         when:
-        def response = service.fetchById(id)
+        def response = service.fetchById(id).get()
 
         then:
         response != null
         id == response.id
         response.name == "Abominable (Blu-Ray + DVD + Digital)"
-        response.current_price.value == 24.99
-        response.current_price.currency_code == "USD"
+        response.currentPrice.value == "24.99"
+        response.currentPrice.currencyCode == "USD"
     }
 
 }
