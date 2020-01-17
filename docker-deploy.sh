@@ -7,7 +7,7 @@ NC='\033[0m' # No Color
 
 PWD=$(pwd)
 
-if  [ "$1" == "stop" ]
+if  [ "$1" == "stop" ] || [ "$1" == "kill" ]
 then
   echo "Stopping and removing all apps from compose file"
   docker-compose -f docker/docker-compose.yml down

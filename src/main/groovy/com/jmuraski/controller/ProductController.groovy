@@ -4,6 +4,8 @@ import com.jmuraski.entity.Item
 import com.jmuraski.service.ItemService
 import com.jmuraski.service.RedskyRestService
 import com.jmuraski.util.ConstraintException
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.MessageSource
 import org.springframework.http.HttpStatus
@@ -25,6 +27,8 @@ import java.util.concurrent.CompletableFuture
 @RestController
 @Validated
 class ProductController {
+
+    Logger log = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
     RedskyRestService redskyRestService
@@ -79,4 +83,9 @@ class ProductController {
         return messageSource.getMessage(messageCarrier.message, null, Locale.ENGLISH)
     }
 
+    @ExceptionHandler(Exception)
+    ResponseEntity<Map> handleUnknownExceptions(Exception ex){
+        log.error("Unknown Exception", ex)
+        return new ResponseEntity<Map>(null, HttpStatus.INTERNAL_SERVER_ERROR)
+    }
 }

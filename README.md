@@ -42,7 +42,6 @@ Test results are stored at build/reports/test/<test type>
 
 
 Future enhancements 
-- [ ] add swagger doc
-- [ ] full exception handling
 - [ ] additional instrumentation
 - [ ] logging
+- [ ] handle exceptions from redsky endpoint
