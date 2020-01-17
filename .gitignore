@@ -4,3 +4,4 @@
 /.idea/
 /notes/
 /docker/redis-data/dump.rdb
+/docker/prometheus/data/

@@ -50,6 +50,7 @@ dependencies {
         exclude group: 'io.lettuce', module: 'lettuce-core'
     }
     compile "org.hibernate.validator:hibernate-validator:${hibernateValidatorVersion}"
+    compile "io.micrometer:micrometer-registry-prometheus:1.3.2"
 }
 
 wrapper {
