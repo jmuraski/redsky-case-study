@@ -1,7 +1,6 @@
 package com.jmuraski.service
 
 import com.jmuraski.entity.Item
-import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
 import spock.lang.Specification
@@ -44,7 +43,6 @@ class RedskyRestServiceSpec extends Specification {
         String expectedUrl = "https://${redskyHost}/${redskyVersion}${redskyEndpoint}/${expectedId}?excludes=taxonomy,promotion,bulk_ship,rating_and_review_reviews,rating_and_review_statistics,question_answer_statistics"
 
         when:
-        println(expectedBody)
         CompletableFuture<Item> result = service.fetchById(expectedId)
         Item item = result.get()
 

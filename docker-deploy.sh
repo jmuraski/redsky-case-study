@@ -1,11 +1,18 @@
 #!/bin/sh
-
+set -e
 export APP_NAME=case-study
 
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 PWD=$(pwd)
+
+if  [ "$1" == "stop" ]
+then
+  echo "Stopping and removing all apps from compose file"
+  docker-compose -f docker/docker-compose.yml down
+  exit 0
+fi
 
 rm -rf $PWD/logs
 mkdir -p $PWD/logs
@@ -27,10 +34,6 @@ else
   echo "Stopping and removing all apps from compose file"
   docker-compose -f docker/docker-compose.yml down
 fi
-
-echo "for debugging you can use the docker run command below"
-echo docker run -it --env-file env --env-file env.secrets --rm -v $PWD/logs:/apps/docker/logs -v $PWD/ssl:/apps/docker/ssl -p 42041:42041 $APP_NAME bash
-echo "local docker container has started, press Cntrl-C to exit"
 
 if [ "$1" == "all" ]
 then

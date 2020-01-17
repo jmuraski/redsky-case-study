@@ -1,0 +1,79 @@
+swagger: "2.0"
+info:
+  description: "This is an API that will return products"
+  version: "1.0.0"
+  title: "Target Case Study"
+host: "localhost"
+basePath: "/"
+tags:
+- name: "Products"
+  description: "Get Producct information"
+- name: "products"
+  description: "Access to Prodcuts"
+schemes:
+- "http"
+paths:
+  /products/{productId}:
+    get:
+      tags:
+      - "products"
+      summary: "Get Product by ID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "product id"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Product"
+        400:
+          description: "Invalid id value"
+  /products:
+    put:
+      tags:
+      - "products"
+      summary: "Update an existing product"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "product id"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Product object used to update product"
+        required: true
+        schema:
+          $ref: "#/definitions/Product"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+definitions:
+  Product:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      current_price:
+        $ref: "#/definitions/Price"
+  Price:
+    type: "object"
+    properties:
+      value:
+        type: "string"
+      currency_code:
+        type: "string"

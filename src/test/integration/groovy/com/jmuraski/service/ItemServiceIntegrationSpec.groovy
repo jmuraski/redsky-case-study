@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
-import org.testcontainers.containers.DockerComposeContainer
 import org.testcontainers.containers.FixedHostPortGenericContainer
 import org.testcontainers.containers.GenericContainer
 import org.testcontainers.spock.Testcontainers
@@ -36,8 +35,6 @@ class ItemServiceIntegrationSpec extends Specification{
         given:
         Price price = new Price(value: "12.12", currencyCode: "USD")
         Item item = new Item(id: randomId(), name: "MY NAME", currentPrice: price)
-        println "I AM HERE"
-        println "${redisHostName}:${redisPort}"
 
         when:
         Optional<Item> optionalItem = itemService.fetchById(item.id).get()

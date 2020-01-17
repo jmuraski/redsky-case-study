@@ -7,7 +7,7 @@ import javax.validation.constraints.NotEmpty
 
 class Price implements Serializable{
     @Digits(integer = 10, fraction = 2, message = "price.value.numeric")
-    @NotEmpty(message = "price.value.notempty")
+    @NotEmpty(message = "value")
     String value
     @JsonProperty("currency_code")
     String currencyCode

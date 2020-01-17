@@ -106,7 +106,6 @@ class ProductsFunctionalSpec extends Specification{
                 data = body
             }
         }
-        println "BODY - ${data}"
 
         then:
         serverResponse.statusCode == 400
@@ -126,7 +125,6 @@ class ProductsFunctionalSpec extends Specification{
                 data = body
             }
         }
-        println "BODY - ${data}"
 
         then:
         serverResponse.statusCode == 400
